@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recipeapp.adapter.RecipeAdapter
 import com.example.recipeapp.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
 import retrofit2.HttpException
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //    }
@@ -20,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recipeAdapter: RecipeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -51,7 +58,20 @@ class MainActivity : AppCompatActivity() {
             }
 //            binding.progressBar.isVisible = false
         }
+
+
+//        val sideNavView = findViewById<NavigationView>(R.id.nav_view)
+//        sideNavView?.setupWithNavController(navController)
+
     }
+
+//    private val onCLicked  = object : MainCategoryAdapter.OnItemClickListener{
+//        override fun onClicked(categoryName: String) {
+//            getMealDataFromDb(categoryName)
+//        }
+//    }
+
+
     private fun setupRecyclerView() = binding.rvRecipes.apply {
         recipeAdapter = RecipeAdapter()
         adapter = recipeAdapter
