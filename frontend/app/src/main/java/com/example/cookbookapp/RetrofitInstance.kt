@@ -1,4 +1,4 @@
-package com.example.recipeapp
+package com.example.cookbookapp
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

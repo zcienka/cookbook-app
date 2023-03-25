@@ -1,4 +1,4 @@
-package com.example.recipeapp
+package com.example.cookbookapp
 
 data class Recipe(
     val id: String,
