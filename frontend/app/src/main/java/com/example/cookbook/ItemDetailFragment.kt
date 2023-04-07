@@ -1,15 +1,18 @@
 package com.example.cookbook
 
+import android.R
 import android.graphics.Typeface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.example.cookbook.databinding.FragmentRecipeDetailBinding
 import com.squareup.picasso.Picasso
+
 
 class ItemDetailFragment : Fragment() {
 
@@ -17,6 +20,9 @@ class ItemDetailFragment : Fragment() {
 
     lateinit var itemDetailTextView: TextView
     lateinit var itemImageView: ImageView
+    lateinit var itemCaloriesTextView: TextView
+    lateinit var itemPreparationTimeTextView: TextView
+    lateinit var itemDescription: TextView
 
     private var _binding: FragmentRecipeDetailBinding? = null
     private val binding get() = _binding!!
@@ -43,6 +49,10 @@ class ItemDetailFragment : Fragment() {
 
         itemDetailTextView = binding.itemDetail
         itemImageView = binding.itemImage!!
+        itemCaloriesTextView = binding.itemCalories!!
+        itemPreparationTimeTextView = binding.itemPreparationTime!!
+        itemDescription = binding.itemDescription!!
+//        itemRecipe = binding.itemRecipe!!
 
         updateContent()
 
@@ -53,13 +63,18 @@ class ItemDetailFragment : Fragment() {
         item?.let {
             itemDetailTextView.text = it.title
             itemDetailTextView.setTypeface(null, Typeface.BOLD);
+            itemCaloriesTextView.text = it.calories
+            itemPreparationTimeTextView.text = it.preparation_time
+            itemDescription.text = it.description
 
             Picasso.get()
                 .load("http://10.0.2.2:8000/media/image0.jpg")
-                .placeholder(R.drawable.image_missing)
-                .into(itemImageView);
+                .placeholder(R.drawable.alert_dark_frame)
+                .into(itemImageView)
         }
     }
+
+
     companion object {
         const val ARG_ITEM_ID = "id"
     }
