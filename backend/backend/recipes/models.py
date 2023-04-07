@@ -9,6 +9,7 @@ class Recipe(models.Model):
     preparation_time = models.TextField(null=True, blank=True)
     calories = models.PositiveIntegerField(default=0)
     ingredients = models.TextField(null=True, blank=True)
+    image = models.TextField(null=True, blank=True)
 
     # class Meta:
     #     ordering = ('-date',)

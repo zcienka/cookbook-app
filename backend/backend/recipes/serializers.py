@@ -11,4 +11,5 @@ class RecipeSerializer(ModelSerializer):
                   'description',
                   'preparation_time',
                   'calories',
-                  'ingredients']
+                  'ingredients',
+                  'image']
