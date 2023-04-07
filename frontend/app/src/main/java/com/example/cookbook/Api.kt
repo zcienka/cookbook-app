@@ -1,8 +1,8 @@
-package com.example.cookbookapp
+package com.example.cookbook
 import retrofit2.Call
 import retrofit2.http.GET
 
 interface Api {
-        @GET("http://10.0.2.2:8000")
+    @GET("/")
     fun getRecipes(): Call<List<Recipe>>
 }
