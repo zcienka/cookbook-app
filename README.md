@@ -1,9 +1,6 @@
 # Cookbook app
 
-<p align="center">
-  <img src="./sprawozdanie/imgs/phone_list.png" alt="Cookbook list phone">
-<img src="./sprawozdanie/imgs/phone_recipe_detail.png" alt="Recipe detail phone">
-</p>
+![phone list](./sprawozdanie/imgs/phone_list.png)![phone recipe detail](./sprawozdanie/imgs/phone_recipe_detail.png)
 
 - [x] Aplikacja ma składać się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy
 
