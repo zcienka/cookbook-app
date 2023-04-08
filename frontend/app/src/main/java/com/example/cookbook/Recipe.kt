@@ -7,5 +7,7 @@ data class Recipe(
     val ingredients: String,
     val preparation_time: String,
     val title: String,
-    val image: String
+    val image: String,
+    val category: String,
+    val recipe: String,
 )

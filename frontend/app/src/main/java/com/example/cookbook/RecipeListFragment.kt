@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookbook.databinding.FragmentRecipeListBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class RecipeListFragment : Fragment() {
@@ -37,10 +40,10 @@ class RecipeListFragment : Fragment() {
         recyclerView: RecyclerView,
         itemDetailFragmentContainer: View?,
     ) {
-        RetrofitInstance.api.getRecipes().enqueue(object : retrofit2.Callback<List<Recipe>> {
+        RetrofitInstance.api.getRecipes().enqueue(object : Callback<List<Recipe>> {
             override fun onResponse(
-                call: retrofit2.Call<List<Recipe>>,
-                response: retrofit2.Response<List<Recipe>>,
+                call: Call<List<Recipe>>,
+                response: Response<List<Recipe>>,
             ) {
                 if (response.isSuccessful && response.body() != null) {
                     val recipes = (response.body())!!
@@ -55,7 +58,7 @@ class RecipeListFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: retrofit2.Call<List<Recipe>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
                 Log.e(ContentValues.TAG, "Response not successful")
             }
         })

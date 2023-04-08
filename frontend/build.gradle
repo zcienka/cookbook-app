@@ -6,10 +6,6 @@ buildscript {
     dependencies {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3")
         classpath 'com.android.tools.build:gradle:4.2.2'
-//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
-//        implementation("com.github.bumptech.glide:glide:4.13.0")
-//        kapt("com.github.bumptech.glide:compiler:4.13.0")
-
     }
 
 }
@@ -20,4 +16,3 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
 }
 
-//apply plugin: 'kotlin-kapt'

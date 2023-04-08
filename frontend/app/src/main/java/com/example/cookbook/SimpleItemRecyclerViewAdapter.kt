@@ -1,5 +1,6 @@
 package com.example.cookbook
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -25,18 +26,18 @@ class SimpleItemRecyclerViewAdapter(
         return ViewHolder(binding)
     }
 
-
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.titleView.text = item.title
         holder.titleView.setTypeface(null, Typeface.BOLD)
         holder.titleView.setTextColor(Color.BLACK)
 
-        holder.caloriesView.text = item.calories
-        holder.timeView.text = item.preparation_time
+        holder.caloriesView.text = item.calories + " kcal"
+        holder.timeView.text = getTime(item.preparation_time.toInt())
 
         Picasso.get()
-            .load("http://10.0.2.2:8000/media/image0.jpg")
+            .load("http://10.0.2.2:8000/${item.image}")
             .placeholder(R.drawable.image_missing)
             .into(holder.imageView)
 
@@ -58,6 +59,19 @@ class SimpleItemRecyclerViewAdapter(
                     itemView.findNavController().navigate(R.id.show_item_detail, bundle)
                 }
             }
+        }
+    }
+
+    private fun getTime(minutes: Int): String {
+        val hours = minutes / 60
+        val minutesRemaining = minutes % 60
+        val hoursString = if (hours == 1) "godzina" else "godziny"
+        val minutesString = if (minutesRemaining == 1) "minuta" else "minut"
+        return when {
+            hours > 0 && minutesRemaining > 0 -> "$hours $hoursString i $minutesRemaining $minutesString"
+            hours > 0 -> "$hours $hoursString"
+            minutesRemaining > 0 -> "$minutesRemaining $minutesString"
+            else -> "0 $minutesString"
         }
     }
 
