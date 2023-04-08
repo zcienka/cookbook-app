@@ -1,12 +1,13 @@
 # Cookbook app
 
 ![phone list](./sprawozdanie/imgs/phone_list.png)![phone recipe detail](./sprawozdanie/imgs/phone_recipe_detail.png)
+![tablet recipe](./sprawozdanie/imgs/tablet_recipe_horizontal.png)
 
 - [x] Aplikacja ma składać się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy
 
 - [x] Aplikacja ma korzystać z fragmentów
 
-- [ ] Aplikacja powinna mieć wersję układu dla smartfonów i osobną dla tabletów
+- [x] Aplikacja powinna mieć wersję układu dla smartfonów i osobną dla tabletów
 
 - [x] Aplikacja powinna działać poprawnie po zmianie orientacji urządzenia
 
