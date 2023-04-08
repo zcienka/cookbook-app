@@ -1,11 +1,15 @@
 package com.example.cookbook
 
 import android.content.ContentValues
+import android.content.Intent
+import android.content.Intent.getIntent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookbook.databinding.FragmentRecipeListBinding
@@ -21,7 +25,7 @@ class RecipeListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View {
+    ): View? {
         _binding = FragmentRecipeListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -63,6 +67,9 @@ class RecipeListFragment : Fragment() {
             }
         })
     }
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -80,9 +80,8 @@ class SimpleItemRecyclerViewAdapter(
     inner class ViewHolder(binding: RecipeListContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val titleView: TextView = binding.content
-        var caloriesView: TextView = binding.calories
+        var caloriesView: TextView = binding.calories!!
         val timeView: TextView = binding.time
-
-        val imageView: ImageView = binding.itemImage
+        val imageView: ImageView = binding.itemImage!!
     }
 }

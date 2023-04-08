@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
@@ -28,6 +29,7 @@ class ItemDetailFragment : Fragment() {
     lateinit var itemIngredients: TextView
     lateinit var itemRecipe: TextView
     lateinit var button: AppCompatButton
+    lateinit var itemContainer: View
 
     private var _binding: FragmentRecipeDetailBinding? = null
     private val binding get() = _binding!!
@@ -61,6 +63,7 @@ class ItemDetailFragment : Fragment() {
         itemIngredients = binding.itemIngredients
         itemRecipe = binding.itemRecipe
         button = binding.goBackBtn
+        itemContainer = binding.itemDetailContainer
 
         button.setOnClickListener {
             it.findNavController().navigateUp()
@@ -73,6 +76,10 @@ class ItemDetailFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun updateContent() {
+        if (item == null) {
+            itemContainer.visibility = View.GONE
+        }
+
         item?.let {
             itemDetailTextView.text = it.title
             itemDetailTextView.setTypeface(null, Typeface.BOLD)
@@ -81,7 +88,6 @@ class ItemDetailFragment : Fragment() {
             itemDescription.text = it.description
             itemIngredients.text = getFormattedIngredients(it.ingredients)
             itemRecipe.text = it.recipe
-
 
             Picasso.get()
                 .load("http://10.0.2.2:8000/${it.image}")

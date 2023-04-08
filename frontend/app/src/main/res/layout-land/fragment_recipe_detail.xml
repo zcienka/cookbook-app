@@ -14,14 +14,14 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="320dp">
 
             <ImageView
                 android:id="@+id/item_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/adsdsa" />
+                android:contentDescription="@string/xd"
+                android:scaleType="centerCrop" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/go_back_btn"
