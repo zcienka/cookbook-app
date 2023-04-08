@@ -10,16 +10,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_list"
         android:name="com.example.cookbook.ItemListFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline"
         tools:context="com.example.cookbook.ItemDetailHostActivity"
         tools:listitem="@layout/recipe_list_content" />
 
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/item_width" />
+        app:layout_constraintGuide_begin="@dimen/item_width"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/item_detail_nav_container"
@@ -37,6 +37,7 @@
         android:layout_height="match_parent"
         app:defaultNavHost="false"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/primary_details_sub_nav_graph" />

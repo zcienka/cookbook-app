@@ -2,6 +2,7 @@ package com.example.cookbook
 
 import android.R
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -65,8 +66,15 @@ class ItemDetailFragment : Fragment() {
         button = binding.goBackBtn
         itemContainer = binding.itemDetailContainer
 
-        button.setOnClickListener {
-            it.findNavController().navigateUp()
+        val isTablet =
+            (resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE
+
+        if (isTablet) {
+            button.visibility = View.INVISIBLE
+        } else {
+            button.setOnClickListener {
+                it.findNavController().navigateUp()
+            }
         }
 
         updateContent()
