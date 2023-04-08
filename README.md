@@ -1,21 +1,23 @@
 # Cookbook app
-- [ ] Aplikacja ma składać się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy
 
-<input type="checkbox" checked disabled /> Aplikacja ma korzystać z fragmentów 
+<p align="center">
+  <img src="./sprawozdanie/imgs/phone_list.png" alt="Cookbook list phone">
+<img src="./sprawozdanie/imgs/phone_recipe_detail.png" alt="Recipe detail phone">
+</p>
+
+- [x] Aplikacja ma składać się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy
+
+- [x] Aplikacja ma korzystać z fragmentów
 
 - [ ] Aplikacja powinna mieć wersję układu dla smartfonów i osobną dla tabletów
 
-- [ ] Aplikacja powinna działać poprawnie po zmianie orientacji urządzenia
+- [x] Aplikacja powinna działać poprawnie po zmianie orientacji urządzenia
 
-- [ ] Źródło danych o przepisach inne niż tablica. Może to być na przykład baza danych lub usługa internetowa
+- [x] Źródło danych o przepisach inne niż tablica. Może to być na przykład baza danych lub usługa internetowa
 
 - [x] Kod aplikacji w Kotlinie
 
-- [ ] Przelicznik ilości składników według liczby porcji
-
-- [ ] Informacja o kaloryczności potrawy
-
-- [ ] Inne informacje, które uważacie za ciekawe w tym kontekście
+- [x] Informacja o kaloryczności potrawy
 
 - [ ] We fragmencie szczegółów należy zagnieździć fragment dynamiczny minutnika
 
@@ -43,12 +45,10 @@
 
 - [ ] Aplikacja ma działać poprawnie przy zmianie orientacji urządzenia.
 
-- [ ] Każda aktywność ma mieć pasek aplikacji w postaci paska narzędzi. 
+- [ ] Każda aktywność ma mieć pasek aplikacji w postaci paska narzędzi.
 
 - [ ] Ekran szczegółów ma być przewijany w pionie razem z paskiem aplikacji.
 
 - [ ] Na ekranie szczegółów obrazek ma się pojawić na pasku aplikacji, ale ma się razem z nim zwijać.
 
 - [ ] Przechodzenie pomiędzy kartami ma się odbywać także za pomocą gestu przeciągnięcia.
-
-
