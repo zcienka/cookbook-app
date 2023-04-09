@@ -1,8 +1,13 @@
 # Cookbook app
+Mobile development uni course assignment.
 
+## Mobile view
 ![phone list](./sprawozdanie/imgs/phone_list.png)![phone recipe detail](./sprawozdanie/imgs/phone_recipe_detail.png)
+
+## Tablet view
 ![tablet recipe](./sprawozdanie/imgs/tablet_recipe_horizontal.png)
 
+## To do:
 - [x] Aplikacja ma składać się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy
 
 - [x] Aplikacja ma korzystać z fragmentów
