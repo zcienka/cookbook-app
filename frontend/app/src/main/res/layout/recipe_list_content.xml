@@ -14,20 +14,22 @@
         android:id="@+id/cardView"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/item_detail_nav_container"
-        app:layout_constraintTop_toTopOf="@+id/item_detail_nav_container"
+        app:cardCornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_detail_nav_container"
-        app:cardCornerRadius="24dp">
+        app:layout_constraintStart_toStartOf="@+id/item_detail_nav_container"
+        app:layout_constraintTop_toTopOf="@+id/item_detail_nav_container">
 
         <ImageView
             android:id="@+id/item_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
             android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="@string/todo" />
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.cardview.widget.CardView>
+
+
 
 
     <TextView
@@ -41,14 +43,13 @@
         tools:ignore="NestedWeights"
         tools:text="Placeholder" />
 
-
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:textSize="16sp"
         android:paddingLeft="16dp"
+        android:textSize="16sp"
         app:drawableLeftCompat="@drawable/baseline_timer_20"
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/content"

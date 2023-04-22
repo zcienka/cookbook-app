@@ -17,19 +17,19 @@
 
 - [x] Informacja o kaloryczności potrawy
 
-- [ ] We fragmencie szczegółów należy zagnieździć fragment dynamiczny minutnika
+- [x] We fragmencie szczegółów należy zagnieździć fragment dynamiczny minutnika
 
-- [ ] Minutnik ma wyświetlać czas z dokładnością do sekundy
+- [x] Minutnik ma wyświetlać czas z dokładnością do sekundy
 
-- [ ] Minutnik powinien działać poprawnie na smartfonach i tabletach
+- [x] Minutnik powinien działać poprawnie na smartfonach i tabletach
 
-- [ ] Minutnik powinien działać poprawnie po zmianie orientacji urządzenia
+- [x] Minutnik powinien działać poprawnie po zmianie orientacji urządzenia
 
-- [ ] Minutnik powinien mieć przyciski: start, stop, przerwij
+- [x] Minutnik powinien mieć przyciski: start, stop, przerwij
 
-- [ ] Osiągnięcie wartości zerowej ma być odpowiednio sygnalizowane. Do wyboru co najmniej jedna z opcji: wizualnie, dźwiękowo, wibracjami.
+- [x] Osiągnięcie wartości zerowej ma być odpowiednio sygnalizowane. Do wyboru co najmniej jedna z opcji: wizualnie, dźwiękowo, wibracjami.
 
-- [ ] Ponadto minutnik ma mieć jedną z dwóch funkcji do wyboru:
+- [x] Ponadto minutnik ma mieć jedną z dwóch funkcji do wyboru:
 - ma automatycznie ustawić pierwszy czas z przepisu, a po odliczeniu tego czasu do końca i reakcji użytkownika automatycznie ustawić kolejny czas z przepisu
 - ma mieć możliwość ustawienia czasu przed uruchomieniem odliczania
 
@@ -50,3 +50,7 @@
 - [ ] Na ekranie szczegółów obrazek ma się pojawić na pasku aplikacji, ale ma się razem z nim zwijać.
 
 - [ ] Przechodzenie pomiędzy kartami ma się odbywać także za pomocą gestu przeciągnięcia.
+
+- [ ] Dodanie krótkiej animacji, która będzie się pojawiać w trakcie uruchamiania aplikacji. Animacja powinna być związana tematycznie z realizowanym zadaniem.
+
+- [ ] Animacja ma się opierać na systemie animacji właściwości, czyli korzystać z obiektu ObjectAnimator

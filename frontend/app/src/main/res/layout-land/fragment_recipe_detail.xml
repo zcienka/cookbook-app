@@ -21,7 +21,7 @@
                 android:id="@+id/item_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/xd"
+                android:contentDescription="@string/recipe_image"
                 android:scaleType="centerCrop" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -75,7 +75,6 @@
                 android:paddingTop="8dp"
                 android:textSize="20sp"
                 app:drawableLeftCompat="@drawable/round_restaurant_20"
-
                 tools:context="com.example.cookbook.ItemDetailFragment"
                 tools:text="1500 kcal" />
 
@@ -93,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec massa non massa auctor rutrum." />
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
 
             <TextView
                 android:id="@+id/item_recipe"
@@ -101,7 +100,15 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp"
                 android:textSize="20sp"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec massa non massa auctor rutrum." />
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+
+            <FrameLayout
+                android:id="@+id/timer_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/item_recipe"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </LinearLayout>
     </LinearLayout>

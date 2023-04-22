@@ -1,15 +1,12 @@
 package com.example.cookbook
 
+
 import android.content.ContentValues
-import android.content.Intent
-import android.content.Intent.getIntent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookbook.databinding.FragmentRecipeListBinding
@@ -21,6 +18,7 @@ import retrofit2.Response
 class RecipeListFragment : Fragment() {
     private var _binding: FragmentRecipeListBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +38,7 @@ class RecipeListFragment : Fragment() {
         setupRecyclerView(recyclerView, itemDetailFragmentContainer)
     }
 
+
     private fun setupRecyclerView(
         recyclerView: RecyclerView,
         itemDetailFragmentContainer: View?,
@@ -54,6 +53,7 @@ class RecipeListFragment : Fragment() {
                     for (recipe in recipes) {
                         Log.e(ContentValues.TAG, recipe.title)
                     }
+
                     recyclerView.adapter = SimpleItemRecyclerViewAdapter(
                         recipes, itemDetailFragmentContainer
                     )
@@ -67,7 +67,6 @@ class RecipeListFragment : Fragment() {
             }
         })
     }
-
 
 
 

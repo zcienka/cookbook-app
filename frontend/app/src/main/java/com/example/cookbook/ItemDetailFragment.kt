@@ -8,8 +8,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
@@ -22,15 +22,16 @@ class ItemDetailFragment : Fragment() {
 
     private var item: Recipe? = null
 
-    lateinit var itemDetailTextView: TextView
-    lateinit var itemImageView: ImageView
-    lateinit var itemCaloriesTextView: TextView
+    private lateinit var itemDetailTextView: TextView
+    private lateinit var itemImageView: ImageView
+    private lateinit var itemCaloriesTextView: TextView
     private lateinit var itemPreparationTimeTextView: TextView
-    lateinit var itemDescription: TextView
-    lateinit var itemIngredients: TextView
-    lateinit var itemRecipe: TextView
-    lateinit var button: AppCompatButton
-    lateinit var itemContainer: View
+    private lateinit var itemDescription: TextView
+    private lateinit var itemIngredients: TextView
+    private lateinit var itemRecipe: TextView
+    private lateinit var button: AppCompatButton
+    private lateinit var itemContainer: View
+    private lateinit var itemTimer: FrameLayout
 
     private var _binding: FragmentRecipeDetailBinding? = null
     private val binding get() = _binding!!
@@ -65,6 +66,7 @@ class ItemDetailFragment : Fragment() {
         itemRecipe = binding.itemRecipe
         button = binding.goBackBtn
         itemContainer = binding.itemDetailContainer
+        itemTimer = binding.timerContainer!!
 
         val isTablet =
             (resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE
@@ -96,6 +98,16 @@ class ItemDetailFragment : Fragment() {
             itemDescription.text = it.description
             itemIngredients.text = getFormattedIngredients(it.ingredients)
             itemRecipe.text = it.recipe
+
+            val fragment = TimerFragment()
+            val args = Bundle()
+            args.putString("total_time", it.preparation_time)
+            fragment.arguments = args
+
+
+            childFragmentManager.beginTransaction()
+                .replace(com.example.cookbook.R.id.timer_container, fragment)
+                .commit()
 
             Picasso.get()
                 .load("http://10.0.2.2:8000/${it.image}")

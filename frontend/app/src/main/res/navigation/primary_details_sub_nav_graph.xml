@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragment_item_detail"
         android:name="com.example.cookbook.ItemDetailFragment"
-        android:label="@string/xd"
+        android:label="@string/recipe_image"
         tools:layout="@layout/fragment_recipe_detail">
 
         <argument
