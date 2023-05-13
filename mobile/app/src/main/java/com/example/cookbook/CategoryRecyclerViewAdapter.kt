@@ -1,0 +1,66 @@
+package com.example.cookbook
+
+import android.annotation.SuppressLint
+import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import com.example.cookbook.databinding.CategoryItemBinding
+import com.example.cookbook.models.Category
+import com.squareup.picasso.Picasso
+
+class CategoryRecyclerViewAdapter(
+    private val values: List<Category>,
+    ) : RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            CategoryItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = values[position]
+
+
+        holder.idView.text = item.name
+
+        Picasso.get()
+            .load("http://10.0.2.2:8000${item.url}")
+            .placeholder(R.drawable.image_missing)
+            .into(holder.imageView)
+
+//        with(holder.itemView) {
+//            tag = item
+//            setOnClickListener { itemView ->
+//                val item = itemView.tag as Recipe
+//                val bundle = Bundle()
+//                bundle.putString(
+//                    ItemDetailFragment.ARG_ITEM_ID,
+//                    item.id,
+//                )
+////                bundle.putSerializable("recipes", values as java.io.Serializable)
+////
+////                if (itemDetailFragmentContainer != null) {
+////                    itemDetailFragmentContainer.findNavController()
+////                        .navigate(R.id.fragment_item_detail, bundle)
+////                } else {
+////                    itemView.findNavController().navigate(R.id.show_item_detail, bundle)
+////                }
+//            }
+//        }
+    }
+
+    override fun getItemCount(): Int = values.size
+
+    inner class ViewHolder(binding: CategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val idView: TextView = binding.itemNumber
+        val imageView: ImageView = binding.itemImage
+    }
+}
