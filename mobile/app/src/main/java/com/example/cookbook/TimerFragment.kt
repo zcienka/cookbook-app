@@ -13,7 +13,6 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import com.example.cookbook.databinding.FragmentTimerBinding
 
-
 class TimerFragment : Fragment() {
     private var _binding: FragmentTimerBinding? = null
     private val binding get() = _binding!!

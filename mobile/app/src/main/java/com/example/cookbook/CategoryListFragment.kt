@@ -9,22 +9,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cookbook.databinding.FragmentRecipeListBinding
+import com.example.cookbook.databinding.CategoryListBinding
 import com.example.cookbook.models.Category
-import com.example.cookbook.models.Recipe
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CategoryFragment : Fragment() {
-    private var _binding: FragmentRecipeListBinding? = null
+class CategoryListFragment : Fragment() {
+    private var _binding: CategoryListBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentRecipeListBinding.inflate(inflater, container, false)
+        _binding = CategoryListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,7 +41,7 @@ class CategoryFragment : Fragment() {
 
     private fun setupCategoryRecyclerView(
         recyclerView: RecyclerView,
-        itemDetailFragmentContainer: View?,
+        itemListFragmentContainer: View?,
     ) {
         RetrofitInstance.api.getCategories().enqueue(object : Callback<List<Category>> {
             override fun onResponse(
@@ -61,7 +60,7 @@ class CategoryFragment : Fragment() {
 
                     recyclerView.layoutManager = layoutManager
                     recyclerView.adapter = CategoryRecyclerViewAdapter(
-                        categories
+                        categories, itemListFragmentContainer
                     )
                 } else {
                     Log.e(ContentValues.TAG, response.code().toString())
@@ -75,7 +74,6 @@ class CategoryFragment : Fragment() {
             }
         })
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

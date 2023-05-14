@@ -15,11 +15,11 @@ import com.example.cookbook.databinding.RecipeListContentBinding
 import com.example.cookbook.models.Recipe
 import com.squareup.picasso.Picasso
 
-class SimpleItemRecyclerViewAdapter(
+class RecipeItemRecyclerViewAdapter(
     private val values: List<Recipe>,
     private val itemDetailFragmentContainer: View?,
 ) :
-    RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
+    RecyclerView.Adapter<RecipeItemRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -58,7 +58,7 @@ class SimpleItemRecyclerViewAdapter(
                     itemDetailFragmentContainer.findNavController()
                         .navigate(R.id.fragment_item_detail, bundle)
                 } else {
-                    itemView.findNavController().navigate(R.id.show_item_detail, bundle)
+                    itemView.findNavController().navigate(R.id.show_recipe_item_detail, bundle)
                 }
             }
         }

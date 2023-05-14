@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.cookbook.databinding.FragmentRecipeDetailBinding
+import com.example.cookbook.databinding.RecipeDetailBinding
 import com.example.cookbook.models.Recipe
 import com.squareup.picasso.Picasso
 
@@ -33,7 +33,7 @@ class ItemDetailFragment : Fragment() {
     private lateinit var itemContainer: View
     private lateinit var itemTimer: FrameLayout
 
-    private var _binding: FragmentRecipeDetailBinding? = null
+    private var _binding: RecipeDetailBinding? = null
     private val binding get() = _binding!!
 
 
@@ -54,7 +54,7 @@ class ItemDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentRecipeDetailBinding.inflate(inflater, container, false)
+        _binding = RecipeDetailBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
         itemDetailTextView = binding.itemDetail

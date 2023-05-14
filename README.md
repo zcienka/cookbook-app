@@ -49,11 +49,11 @@ Mobile development uni course assignment.
 
 - [x] Karty kategorii zamiast listy nazw potraw mają używać widoku RecyclerView z układem siatki (grid), w którym poszczególne pozycje (potrawy) będą prezentowane w postaci obrazka i nazwy, dla których użyto widoku CardView. Kliknięcie wybranej pozycji (potrawy) powoduje wyświetlenie szczegółów, czyli nazwy potrawy, większego obrazka, listy składników i sposobu przygotowania.
 
-- [ ] Na ekranie szczegółów ma się pojawić przycisk FAB (floating action button), który będzie odpowiedzialny za przesłanie listy składników do innej aplikacji (w uproszczonej wersji działanie przycisku może prowadzić jedynie do wyświetlenia odpowiedniego komunikatu).
+- [x] Na ekranie szczegółów ma się pojawić przycisk FAB (floating action button), który będzie odpowiedzialny za przesłanie listy składników do innej aplikacji (w uproszczonej wersji działanie przycisku może prowadzić jedynie do wyświetlenia odpowiedniego komunikatu).
 
 - [ ] W aplikacji należy zastosować motywy.
 
-- [ ] W aplikacji należy korzystać z fragmentów.
+- [x] W aplikacji należy korzystać z fragmentów.
 
 - [ ] Aplikacja ma działać poprawnie przy zmianie orientacji urządzenia.
 

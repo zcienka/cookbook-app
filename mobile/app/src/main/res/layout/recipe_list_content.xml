@@ -9,7 +9,6 @@
     android:background="@drawable/round_outline"
     android:orientation="horizontal">
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="96dp"

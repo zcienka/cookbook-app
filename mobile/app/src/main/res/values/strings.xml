@@ -8,4 +8,5 @@
     <string name="pause">Przerwij</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
+    <string name="refresh">refresh</string>
 </resources>
