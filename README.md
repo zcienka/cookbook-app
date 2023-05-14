@@ -2,10 +2,19 @@
 Mobile development uni course assignment.
 
 ## Mobile view
-![phone list](./sprawozdanie/imgs/phone_list.png)![phone recipe detail](./sprawozdanie/imgs/phone_recipe_detail.png)
+
+<div style="text-align: center;">
+<img src="./res/phone_list.png" alt="phone list" style="width:400px"><img src="./res/phone_recipe_detail.png" alt="phone list" style="width:400px">
+</div>
+
+<div style="text-align: center;">
+<img src="./res/category_view.png" alt="category view" style="width:400px;">
+</div>
 
 ## Tablet view
-![tablet recipe](./sprawozdanie/imgs/tablet_recipe_horizontal.png)
+<div style="text-align: center;">
+<img src="./res/tablet_recipe_horizontal.png" alt="tablet view">
+</div>
 
 ## To do:
 - [x] Aplikacja ma składać się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy
@@ -38,7 +47,7 @@ Mobile development uni course assignment.
 - ma automatycznie ustawić pierwszy czas z przepisu, a po odliczeniu tego czasu do końca i reakcji użytkownika automatycznie ustawić kolejny czas z przepisu
 - ma mieć możliwość ustawienia czasu przed uruchomieniem odliczania
 
-- [ ] Karty kategorii zamiast listy nazw potraw mają używać widoku RecyclerView z układem siatki (grid), w którym poszczególne pozycje (potrawy) będą prezentowane w postaci obrazka i nazwy, dla których użyto widoku CardView. Kliknięcie wybranej pozycji (potrawy) powoduje wyświetlenie szczegółów, czyli nazwy potrawy, większego obrazka, listy składników i sposobu przygotowania.
+- [x] Karty kategorii zamiast listy nazw potraw mają używać widoku RecyclerView z układem siatki (grid), w którym poszczególne pozycje (potrawy) będą prezentowane w postaci obrazka i nazwy, dla których użyto widoku CardView. Kliknięcie wybranej pozycji (potrawy) powoduje wyświetlenie szczegółów, czyli nazwy potrawy, większego obrazka, listy składników i sposobu przygotowania.
 
 - [ ] Na ekranie szczegółów ma się pojawić przycisk FAB (floating action button), który będzie odpowiedzialny za przesłanie listy składników do innej aplikacji (w uproszczonej wersji działanie przycisku może prowadzić jedynie do wyświetlenia odpowiedniego komunikatu).
 
