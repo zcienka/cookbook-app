@@ -17,9 +17,9 @@
             android:layout_height="64dp"
             android:padding="8dp"
             android:text="@string/start"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="?attr/colorAccent"
             android:background="@drawable/round_outline_button_timer"
-            android:textColor="@android:color/white"/>
+            android:textColor="?attr/colorOnPrimary"/>
 
         <TextView
             android:id="@+id/timer_value"
@@ -41,10 +41,10 @@
                 android:layout_height="64dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_outline_button_timer"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="?attr/colorAccent"
                 android:padding="8dp"
                 android:layout_marginEnd="4dp"
-                android:textColor="@android:color/white" />
+                android:textColor="?attr/colorOnPrimaryContainer" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/stop_timer_button"
@@ -53,10 +53,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/round_outline_button_timer"
                 android:layout_marginStart="4dp"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="?attr/colorAccent"
                 android:padding="8dp"
                 android:text="@string/stop"
-                android:textColor="@android:color/white" />
+                android:textColor="?attr/colorOnPrimaryContainer" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

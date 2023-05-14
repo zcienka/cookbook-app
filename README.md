@@ -51,13 +51,13 @@ Mobile development uni course assignment.
 
 - [x] Na ekranie szczegółów ma się pojawić przycisk FAB (floating action button), który będzie odpowiedzialny za przesłanie listy składników do innej aplikacji (w uproszczonej wersji działanie przycisku może prowadzić jedynie do wyświetlenia odpowiedniego komunikatu).
 
-- [ ] W aplikacji należy zastosować motywy.
+- [x] W aplikacji należy zastosować motywy.
 
 - [x] W aplikacji należy korzystać z fragmentów.
 
 - [ ] Aplikacja ma działać poprawnie przy zmianie orientacji urządzenia.
 
-- [ ] Każda aktywność ma mieć pasek aplikacji w postaci paska narzędzi.
+- [x] Każda aktywność ma mieć pasek aplikacji w postaci paska narzędzi.
 
 - [ ] Ekran szczegółów ma być przewijany w pionie razem z paskiem aplikacji.
 

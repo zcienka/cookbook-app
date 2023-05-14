@@ -34,7 +34,7 @@
                 android:drawableLeft="@drawable/arrow_back24px"
                 android:padding="8dp"
                 app:backgroundTint="@null"
-                android:textColor="@android:color/white"/>
+                android:textColor="?attr/colorOnPrimaryContainer"/>
 
         </FrameLayout>
 

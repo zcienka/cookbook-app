@@ -14,14 +14,13 @@
             app:destination="@id/recipe_list" />
     </fragment>
 
-
     <fragment
         android:id="@+id/recipe_list"
         android:name="com.example.cookbook.RecipeListFragment"
         android:label="ItemListFragment">
-<!--        <action-->
-<!--            android:id="@+id/show_recipe_detail"-->
-<!--            app:destination="@id/item_detail_fragment" />-->
+        <action
+            android:id="@+id/show_recipe_item_detail"
+            app:destination="@id/item_detail_fragment" />
     </fragment>
 
     <fragment

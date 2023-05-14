@@ -34,7 +34,7 @@
                 android:padding="8dp"
                 app:backgroundTint="@null"
                 android:layout_weight="0"
-                android:textColor="@android:color/white"/>
+                android:textColor="?attr/colorOnPrimaryContainer"/>
 
         </FrameLayout>
 

@@ -8,6 +8,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookbook.databinding.RecipeListBinding
@@ -30,6 +31,8 @@ class RecipeListFragment : Fragment() {
         if (arguments?.getSerializable("category") != null) {
             category = arguments?.getSerializable("category") as String
         }
+
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,10 @@ class RecipeListFragment : Fragment() {
         val recyclerView: RecyclerView = binding.itemList
         val itemDetailFragmentContainer: View? = view.findViewById(R.id.item_detail_nav_container)
 
+        val backButton: ImageView = view.findViewById(R.id.back_button)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
         val fab: FloatingActionButton = view.findViewById(R.id.fab)
 
         fab.setOnClickListener {
@@ -56,6 +63,7 @@ class RecipeListFragment : Fragment() {
 
         setupRecyclerView(recyclerView, itemDetailFragmentContainer)
     }
+
     private fun Context.toast(message: CharSequence) =
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 

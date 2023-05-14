@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="160dp"
         android:layout_height="wrap_content"
@@ -13,7 +14,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#E3E4EF"
+        app:strokeColor="?attr/colorOnPrimaryContainer"
         app:strokeWidth="1dp">
 
         <RelativeLayout

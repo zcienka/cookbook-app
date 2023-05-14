@@ -12,6 +12,11 @@
         android:orientation="vertical"
         tools:context=".ItemDetailFragment">
 
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/item_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="320dp">
@@ -28,12 +33,12 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_margin="16dp"
-                android:gravity="center_horizontal|top"
                 android:background="@drawable/round_button"
                 android:drawableLeft="@drawable/arrow_back24px"
+                android:gravity="center_horizontal|top"
                 android:padding="8dp"
-                app:backgroundTint="@null"
-                android:textColor="@android:color/white"/>
+                android:textColor="?attr/colorOnPrimaryContainer"
+                app:backgroundTint="@null" />
 
         </FrameLayout>
 
@@ -105,9 +110,9 @@
                 android:id="@+id/timer_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/item_recipe"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/item_recipe" />
 
         </LinearLayout>
     </LinearLayout>
