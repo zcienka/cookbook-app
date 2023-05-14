@@ -45,8 +45,6 @@
             android:orientation="vertical"
             android:paddingHorizontal="32dp">
 
-
-
             <TextView
                 android:id="@+id/item_detail"
                 style="?android:attr/textAppearanceLarge"

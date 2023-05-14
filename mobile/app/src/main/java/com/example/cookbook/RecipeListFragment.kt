@@ -31,18 +31,14 @@ class RecipeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView: RecyclerView = binding.itemList
-        val categoryRecyclerView: RecyclerView? = binding.categoryList
+        val recyclerView: RecyclerView? = binding.itemList
 
-        val itemDetailFragmentContainer: View? = view.findViewById(R.id.item_detail_nav_container)
-
-        setupRecyclerView(recyclerView, itemDetailFragmentContainer)
-
-        if (categoryRecyclerView != null) {
-            setupCategoryRecyclerView(categoryRecyclerView, itemDetailFragmentContainer)
-        }
+//        val itemDetailFragmentContainer: View? = view.findViewById(R.id.item_detail_nav_container)
+//
+//        if (recyclerView != null) {
+//            setupRecyclerView(recyclerView, itemDetailFragmentContainer)
+//        }
     }
-
 
     private fun setupRecyclerView(
         recyclerView: RecyclerView,
@@ -70,42 +66,6 @@ class RecipeListFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                Log.e(ContentValues.TAG, "Response not successful")
-                Log.e(ContentValues.TAG, t.message.toString())
-            }
-        })
-    }
-
-    private fun setupCategoryRecyclerView(
-        recyclerView: RecyclerView,
-        itemDetailFragmentContainer: View?,
-    ) {
-        RetrofitInstance.api.getCategories().enqueue(object : Callback<List<Category>> {
-            override fun onResponse(
-                call: Call<List<Category>>,
-                response: Response<List<Category>>,
-            ) {
-                if (response.isSuccessful && response.body() != null) {
-                    val categories = (response.body())!!
-
-                    for (category in categories) {
-                        Log.e(ContentValues.TAG, category.name)
-                    }
-
-                    val gridNum = 2;
-                    val layoutManager = GridLayoutManager(recyclerView.context, gridNum)
-
-                    recyclerView.layoutManager = layoutManager
-                    recyclerView.adapter = CategoryRecyclerViewAdapter(
-                        categories
-                    )
-                } else {
-                    Log.e(ContentValues.TAG, response.code().toString())
-                    Log.e(ContentValues.TAG, "Response not successful")
-                }
-            }
-
-            override fun onFailure(call: Call<List<Category>>, t: Throwable) {
                 Log.e(ContentValues.TAG, "Response not successful")
                 Log.e(ContentValues.TAG, t.message.toString())
             }
