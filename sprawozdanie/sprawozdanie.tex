@@ -1,0 +1,350 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{grffile}
+
+\usepackage{geometry}
+\usepackage[MeX]{polski}
+\usepackage[polish]{babel}
+\usepackage{float}
+\usepackage{fancyhdr}
+\newcommand{\q}[1]{„#1“}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage[scaled=0.85]{FiraMono} 
+
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\setlength{\parindent}{0pt} 
+
+\newtcblisting{mylisting}{
+    center,
+    arc=2mm,
+    top=0mm,
+    bottom=0mm,
+    left=3mm,
+    right=0mm,
+    width=\textwidth,
+    boxrule=1pt,
+    colback=black!85,
+    listing only,
+    listing options={
+        basicstyle=\small\ttfamily\color{white},  
+        showstringspaces=false,
+        language=Java,
+        keywordstyle=\color{myorange},
+        stringstyle=\color{mygreen},
+        commentstyle=\color{mygray}
+    },
+    fonttitle=\bfseries
+}
+
+\newtcblisting{mylistingXML}{
+    center,
+    arc=2mm,
+    top=0mm,
+    bottom=0mm,
+    left=3mm,
+    right=0mm,
+    width=\textwidth,
+    boxrule=1pt,
+    colback=black!85,
+    listing only,
+    listing options={
+        basicstyle=\small\ttfamily\color{white},  
+        showstringspaces=false,
+        language=XML,
+        keywordstyle=\color{myorange},
+        stringstyle=\color{mygreen},
+        commentstyle=\color{mygray}
+    },
+    fonttitle=\bfseries
+}
+
+
+
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
+
+\definecolor{mygreen}{RGB}{26, 171, 26}
+\definecolor{myorange}{RGB}{230,110,20}
+\definecolor{mygray}{RGB}{100,100,100}
+
+
+\tcbuselibrary{listings}
+
+\begin{document}
+\begin{center}\vspace{-1cm}
+    \textbf{ \Huge }\\
+    \LARGE Aplikacje mobilne\\
+    \large \today \\~\\
+\end{center}
+
+\begin{enumerate}
+\item Aplikacja typu lista-szczegóły
+\begin{enumerate}
+\item Aplikacja składa się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy.
+
+\begin{enumerate}
+
+\item Aktywność wyświetlająca listę potraw.
+\begin{mylisting}
+class RecipeListFragment : Fragment() {
+    private var _binding: FragmentRecipeListBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = FragmentRecipeListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val recyclerView: RecyclerView = binding.itemList
+
+        val itemDetailFragmentContainer: View? = 
+        view.findViewById(R.id.item_detail_nav_container)
+
+        setupRecyclerView(recyclerView, itemDetailFragmentContainer)
+    }
+}
+\end{mylisting}
+
+\newpage
+\item Wyświetlanie listy przepisów i pobieranie ich z serwera.
+\begin{mylisting}
+private fun setupRecyclerView(
+    recyclerView: RecyclerView,
+    itemDetailFragmentContainer: View?,
+) {
+    RetrofitInstance.api.getRecipes().enqueue(object : retrofit2.Callback<List<Recipe>> {
+        override fun onResponse(
+            call: retrofit2.Call<List<Recipe>>,
+            response: retrofit2.Response<List<Recipe>>,
+        ) {
+            if (response.isSuccessful && response.body() != null) {
+                val recipes = (response.body())!!
+                for (recipe in recipes) {
+                    Log.e(ContentValues.TAG, recipe.title)
+                }
+                recyclerView.adapter = SimpleItemRecyclerViewAdapter(
+                    recipes, itemDetailFragmentContainer
+                )
+            } else {
+                Log.e(ContentValues.TAG, "Response not successful")
+            }
+        }
+
+        override fun onFailure(call: retrofit2.Call<List<Recipe>>, t: Throwable) {
+            Log.e(ContentValues.TAG, "Response not successful")
+        }
+    })
+}
+\end{mylisting}
+
+\end{enumerate}
+
+\newpage
+\item Osobna wersja dla smartfonów i tabletów.
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../res/phone_list}
+    \end{minipage}%
+    \begin{minipage}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../res/phone_recipe_detail}
+    \end{minipage}
+    \captionof{figure}{Wersja dla smartfonów}
+\end{figure}
+
+\newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../res/tablet_recipe_horizontal}
+    \captionof{figure}{Wersja dla tabletów}
+\end{figure}
+
+\end{enumerate}
+\newpage
+
+\item Dodanie timera
+\begin{mylisting}
+class TimerFragment : Fragment() {
+    private var _binding: FragmentTimerBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var startButton: AppCompatButton
+    private lateinit var resetTimerButton: AppCompatButton
+    private lateinit var stopButton: AppCompatButton
+    private lateinit var timerValue: TextView
+    private var isTimerRunning: Boolean = false
+    private var time: Long = 0L
+    private var timeRemaining: Long = 0L
+    private var timer: CountDownTimer? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val totalTime = arguments?.getString("total_time")
+
+        if (totalTime != null) {
+            time = totalTime.toLong() * 60000
+        }
+        timeRemaining = time
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = FragmentTimerBinding.inflate(inflater, container, false)
+        val rootView = binding.root
+
+        startButton = binding.startTimerButton
+        stopButton = binding.stopTimerButton
+        resetTimerButton = binding.resetTimerButton
+        timerValue = binding.timerValue
+
+        val initialTime = time / 1000
+        if (!isTimerRunning) {
+            timerValue.text = String.format(
+                "%02d:%02d:%02d",
+                initialTime / 3600,
+                (initialTime % 3600) / 60,
+                initialTime % 60
+            )
+        }
+\end{mylisting}
+\newpage
+\begin{enumerate}
+    \item Przycisk start
+\begin{mylisting}
+startButton.setOnClickListener {
+        if (!isTimerRunning) {
+            timer = object : CountDownTimer(timeRemaining, 1000L) {
+                override fun onTick(millisUntilFinished: Long) {
+                    timeRemaining = millisUntilFinished
+                    updateTimerText()
+                }
+
+                override fun onFinish() {
+                    startVibrations()
+                    isTimerRunning = false
+                    updateTimerText()
+                    timeRemaining = time
+                }
+            }
+
+            timer?.start()
+            isTimerRunning = true
+        } else {
+            timer = object : CountDownTimer(timeRemaining, 1000L) {
+                override fun onTick(millisUntilFinished: Long) {
+                    timeRemaining = millisUntilFinished
+                    updateTimerText()
+                }
+
+                override fun onFinish() {
+                    startVibrations()
+                    isTimerRunning = false
+                    updateTimerText()
+                    timeRemaining = time
+                }
+            }
+            timer?.start()
+        }
+    }
+\end{mylisting}
+
+\newpage
+\item Przycisk stop i  reset
+
+\begin{mylisting}
+stopButton.setOnClickListener {
+    onStop()
+}
+
+resetTimerButton.setOnClickListener {
+    resetTimer()
+}
+
+
+override fun onStop() {
+    super.onStop()
+    if (isTimerRunning) {
+        timer?.cancel()
+        timer = null
+    }
+}
+
+private fun resetTimer() {
+    if (isTimerRunning) {
+        timer?.cancel()
+        timeRemaining = 0L
+        updateTimerText()
+        timer = null
+        timeRemaining = time
+    }
+}
+\end{mylisting}
+
+\end{enumerate}
+
+\newpage
+
+\item Elementy biblioteki wsparcia wzornictwa
+\begin{enumerate}
+    \item Fragment z kategoriami przepisów działa analogicznie do listy przepisów
+     tylko jest on 
+    przekazywany do GridLayoutManager.
+\begin{mylisting}
+private fun setupCategoryRecyclerView(
+    recyclerView: RecyclerView,
+    itemListFragmentContainer: View?,
+) {
+    RetrofitInstance.api.getCategories().enqueue(object : Callback<List<Category>> {
+        override fun onResponse(
+            call: Call<List<Category>>,
+            response: Response<List<Category>>,
+        ) {
+            if (response.isSuccessful && response.body() != null) {
+                val categories = (response.body())!!
+
+                for (category in categories) {
+                    Log.e(ContentValues.TAG, category.name)
+                }
+
+                val gridNum = 2;
+                val layoutManager = GridLayoutManager(recyclerView.context, gridNum)
+
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = CategoryRecyclerViewAdapter(
+                    categories, itemListFragmentContainer
+                )
+            } else {
+                Log.e(ContentValues.TAG, response.code().toString())
+                Log.e(ContentValues.TAG, "Response not successful")
+            }
+        }
+
+        override fun onFailure(call: Call<List<Category>>, t: Throwable) {
+            Log.e(ContentValues.TAG, "Response not successful")
+            Log.e(ContentValues.TAG, t.message.toString())
+        }
+    })
+}
+\end{mylisting}
+
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

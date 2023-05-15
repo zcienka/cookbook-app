@@ -31,9 +31,8 @@ class RecipeListFragment : Fragment() {
         if (arguments?.getSerializable("category") != null) {
             category = arguments?.getSerializable("category") as String
         }
-
-
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
