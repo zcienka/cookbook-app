@@ -62,8 +62,6 @@
     fonttitle=\bfseries
 }
 
-
-
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
 \renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
@@ -170,6 +168,13 @@ private fun setupRecyclerView(
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{../res/tablet_recipe_horizontal}
+    \captionof{figure}{Wersja dla tabletów}
+\end{figure}
+
+\newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../res/tablet_recipe_vertical}
     \captionof{figure}{Wersja dla tabletów}
 \end{figure}
 
@@ -345,6 +350,41 @@ private fun setupCategoryRecyclerView(
 
     \end{enumerate}
 
+\newpage
+
+\item Elementy biblioteki wsparcia wzornictwa
+
+
+\begin{enumerate}
+    \item Karty kategorii zamiast listy nazw potraw używają 
+    widoku RecyclerView z układem siatki (grid), 
+    w którym poszczególne pozycje (potrawy) są prezentowane 
+    w postaci obrazka i nazwy, dla których użyto widoku CardView. 
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.4\textwidth]{../res/category_view}
+        \captionof{figure}{Widok kategorii}
+    \end{figure}
+
+    \newpage
+    \item Ekran z opisem aplikacji i zmiana mechanizmów nawigacji.
+    
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.4\textwidth]{../res/app_info}
+        \captionof{figure}{Opis aplikacji}
+    \end{figure}
+
 \end{enumerate}
+
+\item Animacje
+\begin{enumerate}
+    \item Podczas uruchomienia aplikacji pojawia się prosta animacja 
+    obrazka nad opisem aplikacji.
+\end{enumerate}
+
+\end{enumerate}
+
 
 \end{document}
