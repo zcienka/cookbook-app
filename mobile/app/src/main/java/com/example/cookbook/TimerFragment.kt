@@ -60,7 +60,6 @@ class TimerFragment : Fragment() {
         }
 
         startButton.setOnClickListener {
-
             if (!isTimerRunning) {
                 timer = object : CountDownTimer(timeRemaining, 1000L) {
                     override fun onTick(millisUntilFinished: Long) {

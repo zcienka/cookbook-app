@@ -63,8 +63,8 @@ Mobile development uni course assignment.
 
 - [ ] Na ekranie szczegółów obrazek ma się pojawić na pasku aplikacji, ale ma się razem z nim zwijać.
 
-- [ ] Przechodzenie pomiędzy kartami ma się odbywać także za pomocą gestu przeciągnięcia.
+- [x] Przechodzenie pomiędzy kartami ma się odbywać także za pomocą gestu przeciągnięcia.
 
-- [ ] Dodanie krótkiej animacji, która będzie się pojawiać w trakcie uruchamiania aplikacji. Animacja powinna być związana tematycznie z realizowanym zadaniem.
+- [x] Dodanie krótkiej animacji, która będzie się pojawiać w trakcie uruchamiania aplikacji. Animacja powinna być związana tematycznie z realizowanym zadaniem.
 
-- [ ] Animacja ma się opierać na systemie animacji właściwości, czyli korzystać z obiektu ObjectAnimator
+- [x] Animacja ma się opierać na systemie animacji właściwości, czyli korzystać z obiektu ObjectAnimator

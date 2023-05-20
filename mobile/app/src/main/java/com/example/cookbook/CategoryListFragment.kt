@@ -1,5 +1,4 @@
-package com.example.cookbook
-
+import MyPagerAdapter
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.example.cookbook.CategoryRecyclerViewAdapter
+import com.example.cookbook.R
+import com.example.cookbook.RetrofitInstance
 import com.example.cookbook.databinding.CategoryListBinding
 import com.example.cookbook.models.Category
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,13 +36,14 @@ class CategoryListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val categoryRecyclerView: RecyclerView? = binding.categoryList
-
         val itemDetailFragmentContainer: View? = view.findViewById(R.id.item_detail_nav_container)
+
 
         if (categoryRecyclerView != null) {
             setupCategoryRecyclerView(categoryRecyclerView, itemDetailFragmentContainer)
         }
     }
+
 
     private fun setupCategoryRecyclerView(
         recyclerView: RecyclerView,
@@ -55,7 +61,7 @@ class CategoryListFragment : Fragment() {
                         Log.e(ContentValues.TAG, category.name)
                     }
 
-                    val gridNum = 2;
+                    val gridNum = 2
                     val layoutManager = GridLayoutManager(recyclerView.context, gridNum)
 
                     recyclerView.layoutManager = layoutManager

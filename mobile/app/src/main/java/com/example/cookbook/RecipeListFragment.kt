@@ -75,7 +75,6 @@ class RecipeListFragment : Fragment() {
         }
     }
 
-
     private fun fetchRecipesByCategory(category: String?, recyclerView: RecyclerView, itemDetailFragmentContainer: View?) {
         category?.let {
             RetrofitInstance.api.getRecipesByCategory(it).enqueue(object : Callback<List<Recipe>> {

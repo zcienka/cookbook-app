@@ -66,7 +66,7 @@ class ItemDetailFragment : Fragment() {
         itemRecipe = binding.itemRecipe
         button = binding.goBackBtn
         itemContainer = binding.itemDetailContainer
-        itemTimer = binding.timerContainer!!
+        itemTimer = binding.timerContainer
 
         val isTablet =
             (resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE
@@ -138,7 +138,6 @@ class ItemDetailFragment : Fragment() {
         }
         return formattedIngredients
     }
-
 
     companion object {
         const val ARG_ITEM_ID = "id"
