@@ -32,7 +32,6 @@ class CategoryRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
 
-
         holder.idView.text = item.name
 
         Picasso.get()

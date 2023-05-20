@@ -13,6 +13,14 @@
         android:orientation="vertical"
         tools:context=".ItemDetailFragment">
 
+
+        <include
+            android:id="@+id/toolbarLayout"
+            layout="@layout/toolbar_arrow"
+            app:layout_constraintBottom_toTopOf="@id/item_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="160dp">
@@ -23,18 +31,6 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/recipe_image"
                 android:scaleType="centerCrop" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/go_back_btn"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_margin="16dp"
-                android:gravity="center_horizontal|top"
-                android:background="@drawable/round_button"
-                android:drawableLeft="@drawable/arrow_back24px"
-                android:padding="8dp"
-                app:backgroundTint="@null"
-                android:textColor="?attr/colorOnPrimaryContainer"/>
 
         </FrameLayout>
 

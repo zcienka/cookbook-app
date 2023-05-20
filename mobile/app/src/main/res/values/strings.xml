@@ -13,4 +13,5 @@
     <string name="go_back">Go back</string>
     <string name="kategorie">Kategorie</string>
     <string name="hello_message">Witaj!\nDzięki naszej aplikacji możesz łatwo przeglądać przepisy posortowane kategoriami, dowiadywać się o czasie wykonania dania, jego kaloryczności oraz wszystkich niezbędnych składnikach potrzebnych do jego przygotowania.</string>
+    <string name="Przepis" />
 </resources>

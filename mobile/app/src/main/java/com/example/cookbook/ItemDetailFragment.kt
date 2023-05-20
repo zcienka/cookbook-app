@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.cookbook.databinding.RecipeDetailBinding
@@ -29,13 +29,12 @@ class ItemDetailFragment : Fragment() {
     private lateinit var itemDescription: TextView
     private lateinit var itemIngredients: TextView
     private lateinit var itemRecipe: TextView
-    private lateinit var button: AppCompatButton
+    private lateinit var button: AppCompatImageView
     private lateinit var itemContainer: View
     private lateinit var itemTimer: FrameLayout
 
     private var _binding: RecipeDetailBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +53,9 @@ class ItemDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+
         _binding = RecipeDetailBinding.inflate(inflater, container, false)
         val rootView = binding.root
-
         itemDetailTextView = binding.itemDetail
         itemImageView = binding.itemImage
         itemCaloriesTextView = binding.itemCalories
@@ -64,7 +63,7 @@ class ItemDetailFragment : Fragment() {
         itemDescription = binding.itemDescription
         itemIngredients = binding.itemIngredients
         itemRecipe = binding.itemRecipe
-        button = binding.goBackBtn
+        button = rootView.findViewById(com.example.cookbook.R.id.back_button)
         itemContainer = binding.itemDetailContainer
         itemTimer = binding.timerContainer
 
