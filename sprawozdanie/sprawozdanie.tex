@@ -84,6 +84,7 @@
 \item Aplikacja typu lista-szczegóły
 \begin{enumerate}
 \item Aplikacja składa się z dwóch aktywności: głównej wyświetlającej listę potraw oraz aktywności szczegółów uruchamianej po kliknięciu wybranej potrawy z listy i wyświetlającej co najmniej listę składników oraz sposób przygotowania potrawy.
+Kod jest napisany w Kotlinie z wykorzystaniem fragmentów.
 
 \begin{enumerate}
 
@@ -164,12 +165,7 @@ private fun setupRecyclerView(
     \captionof{figure}{Wersja dla smartfonów}
 \end{figure}
 
-\newpage
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.9\textwidth]{../res/tablet_recipe_horizontal}
-    \captionof{figure}{Wersja dla tabletów}
-\end{figure}
+
 
 \newpage
 \begin{figure}[ht]
@@ -177,11 +173,33 @@ private fun setupRecyclerView(
     \includegraphics[width=0.7\textwidth]{../res/tablet_recipe_vertical}
     \captionof{figure}{Wersja dla tabletów}
 \end{figure}
-
-\end{enumerate}
 \newpage
 
+\item Aplikacja działa po zmianie orientacji urządzenia
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../res/tablet_recipe_horizontal}
+    \captionof{figure}{Wersja dla tabletów w orientacji poziomej}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{../res/phone_list_horizontal}
+    \captionof{figure}{Wersja dla telefonów w orientacji poziomej}
+\end{figure}
+\end{enumerate}
+
+\newpage
 \item Dodanie timera
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{../res/phone_timer}
+    \captionof{figure}{Timer dla telefonu}
+\end{figure}
+
+\newpage
+
 \begin{mylisting}
 class TimerFragment : Fragment() {
     private var _binding: FragmentTimerBinding? = null
@@ -269,6 +287,8 @@ startButton.setOnClickListener {
     }
 \end{mylisting}
 
+\item Osiągnięcie wartości zerowej jest sygnalizowane wibracjami.
+
 \newpage
 \item Przycisk stop i  reset
 
@@ -300,7 +320,6 @@ private fun resetTimer() {
     }
 }
 \end{mylisting}
-
 \end{enumerate}
 
 \newpage
@@ -366,9 +385,79 @@ private fun setupCategoryRecyclerView(
         \includegraphics[width=0.4\textwidth]{../res/category_view}
         \captionof{figure}{Widok kategorii}
     \end{figure}
+\newpage
+
+Karta kategorii z widokiem MaterialCardView
+\begin{mylisting}
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="24dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:strokeColor="?attr/colorOnPrimaryContainer"
+    app:strokeWidth="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="160dp"
+            android:layout_height="256dp"
+            android:contentDescription="@string/category_image"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/item_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_image"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="12dp"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
+\end{mylisting}
+
+    \newpage
+    \item Na ekranie szczegółów pojawia się przycisk FAB, który odświeża listę 
+    i pokazuje komunikat "Updating recipes...".
+    
+    \begin{mylisting}
+override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    val recyclerView: RecyclerView = binding.itemList
+    val itemDetailFragmentContainer: View? = view.findViewById(R.id.item_detail_nav_container)
+
+    val backButton: ImageView = view.findViewById(R.id.back_button)
+    backButton.setOnClickListener {
+        requireActivity().onBackPressed()
+    }
+    val fab: FloatingActionButton = view.findViewById(R.id.fab)
+
+    fab.setOnClickListener {
+        val message = "Updating recipes..."
+        val context = requireContext()
+        context.toast(message)
+        fetchRecipesByCategory(category, recyclerView, itemDetailFragmentContainer)
+    }
+
+    setupRecyclerView(recyclerView, itemDetailFragmentContainer)
+}
+    \end{mylisting}
 
     \newpage
     \item Ekran z opisem aplikacji i zmiana mechanizmów nawigacji.
+    Przechodzenie pomiędzy kartami odbywa się za pomocą gestu przeciągnięcia.
     
     \begin{figure}[ht]
         \centering

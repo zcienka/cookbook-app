@@ -42,9 +42,6 @@ class RecipeItemRecyclerViewAdapter(
             .placeholder(R.drawable.image_missing)
             .into(holder.imageView)
 
-        val mainFragment = MainFragment()
-
-
         with(holder.itemView) {
             tag = item
             setOnClickListener { itemView ->

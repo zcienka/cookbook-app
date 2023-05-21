@@ -1,5 +1,6 @@
 import MyPagerAdapter
 import android.content.ContentValues
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -44,7 +45,6 @@ class CategoryListFragment : Fragment() {
         }
     }
 
-
     private fun setupCategoryRecyclerView(
         recyclerView: RecyclerView,
         itemListFragmentContainer: View?,
@@ -61,7 +61,15 @@ class CategoryListFragment : Fragment() {
                         Log.e(ContentValues.TAG, category.name)
                     }
 
-                    val gridNum = 2
+                    var gridNum = 2
+
+                    val isTablet =
+                        (resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE
+
+                    if (isTablet) {
+                        gridNum = 6
+                    }
+
                     val layoutManager = GridLayoutManager(recyclerView.context, gridNum)
 
                     recyclerView.layoutManager = layoutManager

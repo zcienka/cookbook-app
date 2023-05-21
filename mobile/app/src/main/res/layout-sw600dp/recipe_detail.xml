@@ -15,6 +15,7 @@
         <include
             android:id="@+id/toolbarLayout"
             layout="@layout/toolbar_arrow"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/item_list"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
